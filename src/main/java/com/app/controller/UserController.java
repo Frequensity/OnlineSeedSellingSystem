@@ -1,6 +1,7 @@
 package com.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.LoginRequest;
 import com.app.pojos.Address;
 import com.app.pojos.User;
 import com.app.service.AddressServiceImpl;
@@ -58,6 +60,15 @@ public class UserController {
 		System.out.println("for assigning Address to user");
 		
 		return addressService.assignUserAddress(id, a);
+	}
+	
+	@PostMapping("/signin")
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest request){
+		System.out.println("in user authentication "+request);
+		
+		User user = userService.authenticateUserLogin(request);
+		System.out.println("User "+user);
+		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 	
 	
