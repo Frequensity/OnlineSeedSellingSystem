@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,6 +25,7 @@ public class User extends BaseEntity {
 	private String lastName;
 	@Column( unique = true)
 	private String email;
+	@JsonIgnore
 	private String password;
 	@Transient
 	private String confirmPassword;
