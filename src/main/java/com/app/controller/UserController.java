@@ -70,6 +70,7 @@ public class UserController {
 		System.out.println("User "+user);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
+	
 
 	
 }

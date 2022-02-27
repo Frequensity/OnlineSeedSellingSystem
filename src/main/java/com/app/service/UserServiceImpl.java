@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.custom_exceptiom.AssetNotFoundException;
 import com.app.dao.UserRepository;
 import com.app.dto.LoginRequest;
 import com.app.pojos.User;
@@ -35,7 +36,8 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User authenticateUserLogin(LoginRequest loginRequst) {
 		
-		return userRepository.validateUser(loginRequst.getUserName(), loginRequst.getPassword());
+		return userRepository.validateUser(loginRequst.getUserName(), loginRequst.getPassword())
+							 .orElseThrow(()-> new AssetNotFoundException("User Not found "));
 	}
 
 	
