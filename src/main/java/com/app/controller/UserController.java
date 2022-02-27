@@ -52,7 +52,7 @@ public class UserController {
 		System.out.println("in get user details "+id);
 		
 		
-		return ResponseEntity.ok(userService.getUserDetails(id));
+		return new ResponseEntity<>(userService.getUserDetails(id),HttpStatus.OK);
 	}
 	
 	@PostMapping("/address/{id}")
