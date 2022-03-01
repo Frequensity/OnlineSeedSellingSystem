@@ -36,7 +36,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User authenticateUserLogin(LoginRequest loginRequst) {
 		
-		return userRepository.validateUser(loginRequst.getUserName(), loginRequst.getPassword())
+		return userRepository.validateUser(loginRequst.getEmail(), loginRequst.getPassword())
 							 .orElseThrow(()-> new AssetNotFoundException("User Not found "));
 	}
 

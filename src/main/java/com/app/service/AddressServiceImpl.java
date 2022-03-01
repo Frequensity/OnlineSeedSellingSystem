@@ -20,7 +20,7 @@ public class AddressServiceImpl implements IAddressService {
 
 	@Override
 	public Address assignUserAddress(int uid,Address transientAddress) {
-		User user = userRepo.findById(uid).orElseThrow(()-> new RuntimeException("User not found"));
+		User user = userRepo.findById(uid).orElseThrow(()-> new RuntimeException("User not found "));
 		transientAddress.setUser(user);
 		
 		return addressRepository.save(transientAddress);

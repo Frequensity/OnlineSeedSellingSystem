@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.custom_exceptiom.AssetNotFoundException;
 import com.app.dto.LoginRequest;
+import com.app.dto.ResponseDTO;
 import com.app.pojos.Address;
 import com.app.pojos.User;
 import com.app.service.AddressServiceImpl;
@@ -63,12 +65,16 @@ public class UserController {
 	}
 	
 	@PostMapping("/signin")
-	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest request){
+	public ResponseDTO<?> authenticateUser(@RequestBody LoginRequest request){
 		System.out.println("in user authentication "+request);
-		
+		try {
 		User user = userService.authenticateUserLogin(request);
 		System.out.println("User "+user);
-		return new ResponseEntity<>(user, HttpStatus.OK);
+		return new ResponseDTO<>(HttpStatus.OK,"user found ",user);
+		}catch (AssetNotFoundException e) {
+			System.out.println("User authentication error "+e);
+			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"user not found ",null);
+		}
 	}
 	
 

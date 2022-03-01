@@ -51,6 +51,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resp);
 	}
 	
+//	@ExceptionHandler(RuntimeException.class)
+//	public ResponseDTO<?> runtimeHandleException(RuntimeException rt) throws BeanCreationException{
+//		System.out.println("in respone dto exception "+rt);
+//		
+//		return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"User not found ",null);
+//	}
+	
 	
 	
 	
