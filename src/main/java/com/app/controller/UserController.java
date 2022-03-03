@@ -67,14 +67,10 @@ public class UserController {
 	@PostMapping("/signin")
 	public ResponseDTO<?> authenticateUser(@RequestBody LoginRequest request){
 		System.out.println("in user authentication "+request);
-		try {
 		User user = userService.authenticateUserLogin(request);
 		System.out.println("User "+user);
 		return new ResponseDTO<>(HttpStatus.OK,"user found ",user);
-		}catch (AssetNotFoundException e) {
-			System.out.println("User authentication error "+e);
-			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"user not found ",null);
-		}
+		
 	}
 	
 

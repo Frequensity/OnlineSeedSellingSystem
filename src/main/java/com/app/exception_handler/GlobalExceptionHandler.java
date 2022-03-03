@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.app.custom_exceptiom.AssetNotFoundException;
 import com.app.dto.ErrorResponse;
+import com.app.dto.ResponseDTO;
 
 @ControllerAdvice // its mandatory class level anno, to tell SC that following class will contain 
 //global exc handling meth, offer a common ADVICE to controller layer
@@ -52,7 +53,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	}
 	
 //	@ExceptionHandler(RuntimeException.class)
-//	public ResponseDTO<?> runtimeHandleException(RuntimeException rt) throws BeanCreationException{
+//	public ResponseDTO<?> runtimeHandleException(RuntimeException rt) {
 //		System.out.println("in respone dto exception "+rt);
 //		
 //		return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR,"User not found ",null);
