@@ -20,8 +20,6 @@ public class Product extends BaseEntity {
 	private String productName;
 	@Column(length = 500)
 	private String description;
-	@Column(length = 40, nullable = false,name = "catagory_name")
-	private String catagoryName;
 	@Column(length = 10)
 	private double price;
 	@Column(length = 10)

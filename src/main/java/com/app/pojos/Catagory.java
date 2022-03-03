@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Catagory extends BaseEntity {
-	@Column(length = 20,nullable = false)
+	@Column(length = 20,nullable = false,unique = true)
 	private String catagoryName;
 	
 	public Catagory (String catagoryName) {
