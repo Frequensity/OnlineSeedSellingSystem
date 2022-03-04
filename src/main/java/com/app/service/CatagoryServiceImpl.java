@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.app.dao.CatagoryRepository;
@@ -15,5 +17,20 @@ public class CatagoryServiceImpl implements ICatagoryService {
 		// it will return saved catagory
 		return catagoryRepo.save(transientCatagory);
 	}
+
+	@Override
+	public Catagory getCatagoryById(int id) {
+		 Optional<Catagory> catagory = catagoryRepo.findById(id);
+		return catagory.orElseThrow(()-> new RuntimeException("catagory found by id "+id));
+	}
+
+	@Override
+	public void deleteCatagory(int id) {
+		 catagoryRepo.deleteById(id);
+		 
+	}
+
+	
+	
 
 }
