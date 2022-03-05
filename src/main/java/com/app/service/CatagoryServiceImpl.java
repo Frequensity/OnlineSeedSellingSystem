@@ -2,11 +2,16 @@ package com.app.service;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.app.dao.CatagoryRepository;
 import com.app.pojos.Catagory;
 
+@Service
+@Transactional
 public class CatagoryServiceImpl implements ICatagoryService {
 	
 	@Autowired

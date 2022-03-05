@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.pojos.Catagory;
+import com.app.pojos.Product;
 import com.app.service.CatagoryServiceImpl;
+import com.app.service.ProductServiceImpl;
 
 @RestController
 @RequestMapping("/admin")
@@ -23,11 +25,14 @@ public class AdminController {
 	@Autowired
 	private CatagoryServiceImpl catagoryService;
 	
+	@Autowired
+	private ProductServiceImpl productService;
+	
 	public AdminController() {
 		System.out.println("In Admin Controller "+getClass());
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/addCatagory")
 	public Catagory addCatagory(@RequestBody Catagory c) {
 		System.out.println("in add catagory ");
 		
@@ -41,7 +46,15 @@ public class AdminController {
 		return new ResponseEntity<>(catagoryService.getCatagoryById(id),HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/delete")
+//	@DeleteMapping("/delete")
+	
+	@PostMapping("/addProduct")
+	public Product addProduct(@RequestBody Product p) {
+		System.out.println("in product add ");
+		 Product newProduct = productService.addproduct(p);
+		 
+		return null;
+	}
 	
 	
 	

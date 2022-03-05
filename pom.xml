@@ -15,6 +15,7 @@
 	<description>Spring project for selling organic seeds to farmers and wholesellers</description>
 	<properties>
 		<java.version>11</java.version>
+		<jackson.version>2.9.8</jackson.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -60,6 +61,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-hibernate5</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 	
 	</dependencies>
