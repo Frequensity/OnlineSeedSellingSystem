@@ -26,8 +26,8 @@ public class Catagory extends BaseEntity {
 		this.catagoryName = catagoryName;
 	}
 	
-	@OneToMany(mappedBy = "catagoryId",cascade = CascadeType.ALL,orphanRemoval = true)
-	private List<Product> products = new ArrayList<>(); //initializing empty array list 
+	@OneToMany(mappedBy = "catagoryId",cascade = CascadeType.ALL,orphanRemoval = true )
+	private List<Product> products = new ArrayList<>();//initializing empty array list 
 	
 	public void addProduct(Product p) {
 		//to add product reference in category

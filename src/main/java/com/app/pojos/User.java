@@ -25,13 +25,15 @@ public class User extends BaseEntity {
 	private String lastName;
 	@Column( unique = true)
 	private String email;
-	@JsonIgnore
+	@Column(length = 20)
 	private String password;
 	@Transient
+	@JsonIgnore
 	private String confirmPassword;
 	@Column(length = 20,name = "phone")
 	private String phoneNumber;
+	
 	@Enumerated(EnumType.STRING)
-	private Role type;
+	private Role type=Role.USER;
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.dto.ResponseDTO;
 import com.app.pojos.Catagory;
 import com.app.pojos.Product;
 import com.app.service.CatagoryServiceImpl;
@@ -33,10 +34,10 @@ public class AdminController {
 	}
 	
 	@PostMapping("/addCatagory")
-	public Catagory addCatagory(@RequestBody Catagory c) {
+	public ResponseDTO<?> addCatagory(@RequestBody Catagory c) {
 		System.out.println("in add catagory ");
-		
-		return catagoryService.addCatagory(c);
+		Catagory newCatagory = catagoryService.addCatagory(c);
+		return new ResponseDTO<>(HttpStatus.OK,"Catagory Added Successfully ",newCatagory);
 	}
 	
 	@GetMapping("/{id}")
@@ -48,13 +49,13 @@ public class AdminController {
 	
 //	@DeleteMapping("/delete")
 	
-	@PostMapping("/addProduct")
-	public Product addProduct(@RequestBody Product p) {
-		System.out.println("in product add ");
-		 Product newProduct = productService.addproduct(p);
-		 
-		return null;
-	}
+//	@PostMapping("/addProduct")
+//	public Product addProduct(@RequestBody Product p) {
+//		System.out.println("in product add ");
+//		 Product newProduct = productService.addproduct(p);
+//		 
+//		return null;
+//	}
 	
 	
 	

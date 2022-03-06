@@ -15,9 +15,11 @@ public class ProductServiceImpl implements IProductService {
 	@Autowired 
 	private ProductRepository productRepo;
 	@Override
-	public Product addproduct(Product transientProduct) {
-			
-		return productRepo.save(transientProduct);
+	public String addproduct(Product transientProduct) {
+		if(productRepo.save(transientProduct) != null) {
+		return "product added succesfully" ;
+		}
+		return "Cannot add product";
 	}
 
 }

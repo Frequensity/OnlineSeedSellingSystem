@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.custom_exceptiom.AssetNotFoundException;
 import com.app.dto.LoginRequest;
 import com.app.dto.ResponseDTO;
+import com.app.dto.UserDTO;
 import com.app.pojos.Address;
 import com.app.pojos.User;
 import com.app.service.AddressServiceImpl;
@@ -42,13 +43,12 @@ public class UserController {
 	
 	// adding method to add a new user in system
 	@PostMapping("/add")
-	public User addUserDetails(@RequestBody User u) {
+	public ResponseDTO<?> addUserDetails(@RequestBody User u) {
 		System.out.println("in add user ");
-		return userService.addUser(u);
+		User newUser = userService.addUser(u);
+		return new ResponseDTO<>(HttpStatus.OK,"user added succesfully ",newUser);
 	}
-	
-	
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getUserDetails(@PathVariable int id) {
 		System.out.println("in get user details "+id);
