@@ -9,24 +9,31 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "catagory")
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+
+@Getter
+@Setter
 public class Catagory extends BaseEntity {
 	@Column(length = 20,nullable = false,unique = true)
+	@JsonProperty(value = "catagoryName")
 	private String catagoryName;
 	
-	public Catagory (String catagoryName) {
+	public Catagory(String catagoryName) {
+		super();
 		this.catagoryName = catagoryName;
 	}
 	
-	@OneToMany(mappedBy = "catagoryId",cascade = CascadeType.ALL,orphanRemoval = true )
+	@JsonIgnore
+	@OneToMany(mappedBy = "catagoryId",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Product> products = new ArrayList<>();//initializing empty array list 
 	
 	public void addProduct(Product p) {
@@ -44,5 +51,12 @@ public class Catagory extends BaseEntity {
 		p.setCatagoryId(null);
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Catagory [catagoryName=" + catagoryName + "]";
+	}
+
+	
 	
 }

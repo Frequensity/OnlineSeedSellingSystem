@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.app.dto.ProductDTO;
-import com.app.dto.ResponseDTO;
 import com.app.pojos.Catagory;
 import com.app.pojos.Product;
 import com.app.service.CatagoryServiceImpl;

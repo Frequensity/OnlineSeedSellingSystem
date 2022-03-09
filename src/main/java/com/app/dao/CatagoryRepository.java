@@ -7,5 +7,5 @@ import com.app.pojos.Catagory;
 
 @Repository
 public interface CatagoryRepository extends JpaRepository<Catagory,Integer> {
-
+	
 }

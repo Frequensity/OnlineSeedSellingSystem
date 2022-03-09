@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -33,6 +34,12 @@ public class CatagoryServiceImpl implements ICatagoryService {
 	public void deleteCatagory(int id) {
 		 catagoryRepo.deleteById(id);
 		 
+	}
+
+	@Override
+	public List<Catagory> getAllCatagories() {
+		
+		return catagoryRepo.findAll();
 	}
 
 	
