@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,11 @@ public class ProductServiceImpl implements IProductService {
 		return "product added succesfully" ;
 		}
 		return "Cannot add product";
+	}
+	@Override
+	public List<Product> getAllProducts() {
+		
+		return productRepo.findAll();
 	}
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
 import com.app.pojos.Catagory;
+import com.app.pojos.Product;
 import com.app.service.CatagoryServiceImpl;
 import com.app.service.ProductServiceImpl;
 
@@ -53,7 +54,12 @@ public class AdminController {
 		return new ResponseDTO<>(HttpStatus.OK, "All Catagories", allCatagories);
 	}
 	
-
+	@GetMapping("/getProduct")
+	public ResponseDTO<?> getAllProductList(){
+		List<Product> allProducts = productService.getAllProducts();
+		
+		return new ResponseDTO<>(HttpStatus.OK,"product are received",allProducts);
+	}
 	
 	
 	
