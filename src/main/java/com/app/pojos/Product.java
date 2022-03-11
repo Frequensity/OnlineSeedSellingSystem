@@ -47,6 +47,14 @@ public class Product extends BaseEntity {
 		this.quantity = quantity;
 	}
 	
+	public Product(double price, int quantity) {
+		super();
+		this.price = price;
+		this.quantity = quantity;
+	}
+	
+	
+	
 	
 	           
 }
