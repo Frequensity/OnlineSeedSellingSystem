@@ -56,6 +56,14 @@ public class AdminController {
 		return new ResponseDTO<>(HttpStatus.OK, "All Catagories", allCatagories);
 	}
 	
+	
+	@DeleteMapping("/deleteCatagory/{id}")
+	public ResponseDTO<?> deleteCatagory(@PathVariable int id){
+		System.out.println("In delete mapping of catagory");
+		String deleteCatagory = catagoryService.deleteCatagory(id);
+		return new ResponseDTO<>(HttpStatus.OK, "Catagory deleted Successfully", deleteCatagory);
+	}
+	
 	@GetMapping("/getProduct")
 	public ResponseDTO<?> getAllProductList(){
 		List<Product> allProducts = productService.getAllProducts();
@@ -76,7 +84,17 @@ public class AdminController {
 		return new ResponseDTO<>(HttpStatus.OK, "product updated succesfully", updatProduct);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@PutMapping("/updateCatagory/{id}")
+	public ResponseDTO<?> updateCatagoryByID(@RequestBody Catagory c,@PathVariable int id){
+		catagoryService.updateCatagory(c.getCatagoryName(), id);
+		
+		Catagory updatedCatagory = new Catagory();
+		updatedCatagory.setCatagoryName(c.getCatagoryName());
+		
+		return new ResponseDTO<>(HttpStatus.OK, "updated catagory succesfully", updatedCatagory);
+	}
+	
+	@DeleteMapping("/deleteProduct/{id}")
 	public ResponseDTO<?> deleteProduct(@PathVariable int id){
 		String deletedProduct = productService.deleteProductById(id);
 		

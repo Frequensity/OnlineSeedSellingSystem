@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.custom_exceptiom.AssetNotFoundException;
 import com.app.dao.CatagoryRepository;
 import com.app.pojos.Catagory;
 
@@ -31,15 +32,26 @@ public class CatagoryServiceImpl implements ICatagoryService {
 	}
 
 	@Override
-	public void deleteCatagory(int id) {
+	public String deleteCatagory(int id) {
 		 catagoryRepo.deleteById(id);
-		 
+		 return "catagory deleted Successfully";
 	}
 
 	@Override
 	public List<Catagory> getAllCatagories() {
 		
 		return catagoryRepo.findAll();
+	}
+
+	@Override
+	public Catagory updateCatagory(String catagoryName, int id) {
+		Catagory catagory = catagoryRepo.findById(id).orElseThrow(()-> new AssetNotFoundException("Catagory by id = "+id+" not found "));
+		
+		if(catagory != null) {
+			 catagoryRepo.updateCatagoryById(catagoryName, id);
+			 return catagory;
+		}
+		return null;
 	}
 
 	

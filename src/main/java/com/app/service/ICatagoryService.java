@@ -9,7 +9,9 @@ public interface ICatagoryService {
 	
 	Catagory getCatagoryById(int id);
 	
-	void deleteCatagory(int id);
+	String deleteCatagory(int id);
 	
 	List<Catagory> getAllCatagories();
+	
+	Catagory updateCatagory(String catagoryName,int id);
 }
