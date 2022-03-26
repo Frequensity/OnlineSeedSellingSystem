@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.dto.ResponseDTO;
 import com.app.pojos.Catagory;
 import com.app.pojos.Product;
+import com.app.pojos.User;
 import com.app.service.CatagoryServiceImpl;
 import com.app.service.ProductServiceImpl;
+import com.app.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class AdminController {
 	
 	@Autowired
@@ -31,6 +33,9 @@ public class AdminController {
 	
 	@Autowired
 	private ProductServiceImpl productService;
+	
+	@Autowired
+	private UserServiceImpl userService;
 	
 	public AdminController() {
 		System.out.println("In Admin Controller "+getClass());
@@ -99,6 +104,19 @@ public class AdminController {
 		String deletedProduct = productService.deleteProductById(id);
 		
 		return new ResponseDTO<>(HttpStatus.OK, "deleted successfully", deletedProduct);
+	}
+	
+	@GetMapping("/allUsers")
+	public ResponseDTO<?> getAllUserList(){
+		List<User> user = userService.getAllUSer();
+		return new ResponseDTO<>(HttpStatus.OK,"List updated Succesfully ",user);
+		
+	}
+	
+	@DeleteMapping("/deleteUser/{id}")
+	public ResponseDTO<?> deleteUser(@PathVariable int id){
+		String deleteUser = userService.deleteUser(id);
+		return new ResponseDTO<>(HttpStatus.OK, "deleted user Succesfully", deleteUser);
 	}
 	
 	

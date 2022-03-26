@@ -22,7 +22,7 @@ import com.app.service.ProductServiceImpl;
 
 @RestController
 @RequestMapping("/image")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class ProductController {
 	
 	@Value("${file.upload-dir}")
