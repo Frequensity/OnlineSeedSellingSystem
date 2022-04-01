@@ -35,6 +35,9 @@ public class Catagory extends BaseEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "catagoryId",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Product> products = new ArrayList<>();//initializing empty array list 
+	@JsonIgnore
+	@OneToMany(mappedBy = "catagoryId",cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Cart> carts = new ArrayList<>();
 	
 	public void addProduct(Product p) {
 		//to add product reference in category

@@ -1,7 +1,6 @@
 package com.app.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -49,6 +48,18 @@ public class ProductServiceImpl implements IProductService {
 		}
 		
 		
+	}
+	@Override
+	public List<Product> getProductByCatagoryId(int id) {
+		
+		List<Product> productList = productRepo.findProductByCatagoryId(id);
+		
+		return productList;
+	}
+	@Override
+	public Product getProductById(int id) {
+			Product product = productRepo.findById(id).orElseThrow(()-> new AssetNotFoundException("Product Not Found by id "+id));
+		return product;
 	}
 
 }

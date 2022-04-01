@@ -1,23 +1,29 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "user")
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 public class User extends BaseEntity {
 	@Column(name = "first_name",length = 30)
 	private String firstName;
@@ -35,5 +41,9 @@ public class User extends BaseEntity {
 	
 	@Enumerated(EnumType.STRING)
 	private Role type=Role.USER;
+	@JsonIgnore
+	@OneToMany(mappedBy = "userId",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
+	private List<Cart> carts = new ArrayList<>();
+	
 	
 }

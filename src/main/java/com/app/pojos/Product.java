@@ -1,10 +1,13 @@
 package com.app.pojos;
 
+import java.util.ArrayList;
+import java.util.List;import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -38,6 +41,10 @@ public class Product extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "cat_no",nullable = false)
 	private Catagory catagoryId;
+	@JsonIgnore
+	@OneToMany(mappedBy = "productId",cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Cart> carts = new ArrayList<>();
+	
 	public Product(String productImage, String productName, String description, double price, int quantity) {
 		super();
 		this.productImage = productImage;
@@ -46,15 +53,11 @@ public class Product extends BaseEntity {
 		this.price = price;
 		this.quantity = quantity;
 	}
-	
+
 	public Product(double price, int quantity) {
 		super();
 		this.price = price;
 		this.quantity = quantity;
 	}
-	
-	
-	
-	
 	           
 }

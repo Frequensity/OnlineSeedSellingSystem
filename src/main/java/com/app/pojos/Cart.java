@@ -4,8 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -20,11 +19,13 @@ import lombok.NoArgsConstructor;
 public class Cart extends BaseEntity {
 	private double price;
 	private int productQuantity;
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(optional = true,targetEntity = User.class)
 	@JoinColumn(name = "user_id",nullable = false)
-	@MapsId
-	private User user;
+	private User userId;
 	@ManyToOne
 	@JoinColumn(name = "product_id",nullable = false)
-	private Product product;
+	private Product productId;
+	@ManyToOne
+	@JoinColumn(name="cat_id",nullable = false)
+	private Catagory catagoryId;
 }

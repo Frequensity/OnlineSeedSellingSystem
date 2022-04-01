@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
+import com.app.pojos.Cart;
 import com.app.pojos.Catagory;
 import com.app.pojos.Product;
 import com.app.pojos.User;
+import com.app.service.CartServiceImpl;
 import com.app.service.CatagoryServiceImpl;
 import com.app.service.ProductServiceImpl;
 import com.app.service.UserServiceImpl;
@@ -36,6 +38,7 @@ public class AdminController {
 	
 	@Autowired
 	private UserServiceImpl userService;
+	
 	
 	public AdminController() {
 		System.out.println("In Admin Controller "+getClass());
@@ -118,6 +121,8 @@ public class AdminController {
 		String deleteUser = userService.deleteUser(id);
 		return new ResponseDTO<>(HttpStatus.OK, "deleted user Succesfully", deleteUser);
 	}
+	
+	
 	
 	
 	
