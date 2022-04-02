@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.ResponseDTO;
-import com.app.pojos.Cart;
 import com.app.pojos.Catagory;
 import com.app.pojos.Product;
 import com.app.pojos.User;
-import com.app.service.CartServiceImpl;
 import com.app.service.CatagoryServiceImpl;
 import com.app.service.ProductServiceImpl;
 import com.app.service.UserServiceImpl;

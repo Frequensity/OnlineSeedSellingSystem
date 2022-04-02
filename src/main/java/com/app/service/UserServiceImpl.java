@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.custom_exceptiom.AssetNotFoundException;
+import com.app.dao.AddressRepository;
 import com.app.dao.UserRepository;
+import com.app.dto.DTOEntityConverter;
 import com.app.dto.LoginRequest;
+import com.app.dto.UserDTO;
+import com.app.pojos.Address;
 import com.app.pojos.Role;
 import com.app.pojos.User;
 
@@ -21,10 +24,29 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private DTOEntityConverter converter;
+	
+	@Autowired
+	private AddressRepository addressRepo;
+	
 	@Override
-	public User addUser(User transientUser) {
+	public String addUser(UserDTO transientUser) {
 		//it will return saved user
-		return userRepository.save(transientUser);
+//		User user2 = userRepository.findByEmail(transientUser.getEmail()).get();
+//		
+//		if(user2 != null) {
+//			throw new RuntimeException("User already exist");
+//		}
+		
+		System.out.println("before add save");
+		Address address = converter.userAddress(transientUser);
+		addressRepo.save(address);
+		System.out.println("after add save");
+		User user = converter.toUserEntity(transientUser, address);
+		userRepository.save(user);
+		System.out.println("after user add save");
+		return user.getEmail();
 	}
 
 	@Override
@@ -38,8 +60,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User authenticateUserLogin(LoginRequest loginRequst) {
 		
-		return userRepository.validateUser(loginRequst.getEmail(), loginRequst.getPassword())
-							 .orElseThrow(()-> new AssetNotFoundException("User Not found "));
+		return userRepository.validateUser(loginRequst.getEmail(), loginRequst.getPassword());
 	}
 
 	@Override

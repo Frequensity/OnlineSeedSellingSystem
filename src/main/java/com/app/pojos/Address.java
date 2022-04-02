@@ -1,22 +1,21 @@
 package com.app.pojos;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "address")
 @NoArgsConstructor
-@Data
-@AllArgsConstructor
+
+@Getter
+@Setter
+@ToString
 public class Address extends BaseEntity{
 	
 	@Column(length = 10)
@@ -29,10 +28,7 @@ public class Address extends BaseEntity{
 	private String state;
 	@Column(length = 10)
 	private int pincode;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "u_id",nullable = false)
-	@MapsId
-	private User user;
+
 	
 	public Address(int houseNo, String street, String city, String state, int pincode) {
 		super();

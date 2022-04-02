@@ -13,7 +13,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.app.custom_exceptiom.AssetNotFoundException;
 import com.app.dto.ErrorResponse;
-import com.app.dto.ResponseDTO;
 
 @ControllerAdvice // its mandatory class level anno, to tell SC that following class will contain 
 //global exc handling meth, offer a common ADVICE to controller layer
@@ -48,7 +47,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(RuntimeException.class)
 	public ResponseEntity<?> handleRuntimeException(RuntimeException rt){
 		System.out.println("in handle runtime Exception "+rt);
-		ErrorResponse resp = new ErrorResponse("Something went wrong"+rt.getMessage(),LocalDateTime.now());
+		ErrorResponse resp = new ErrorResponse("Something went wrong "+rt.getMessage(),LocalDateTime.now());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(resp);
 	}
 	

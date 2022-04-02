@@ -1,7 +1,5 @@
 package com.app.dto;
 
-import com.app.pojos.Role;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,11 @@ public class UserDTO {
 	private String lastName;
 	private String email;
 	private String password;
+	private String confirmPassword;
 	private String phoneNumber;
-	private Role type = Role.USER;
+	private int houseNo;
+	private String street;
+	private String city;
+	private String state;
+	private int pincode;
 }

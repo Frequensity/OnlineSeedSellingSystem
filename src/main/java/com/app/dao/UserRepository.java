@@ -13,7 +13,9 @@ import com.app.pojos.User;
 public interface UserRepository extends JpaRepository<User,Integer> {
 		//	Optional<User> findByEmailAndPassword(String em,String pwd);
 	@Query("select u from User u where u.email=:mail and u.password=:pwd")
-	Optional<User> validateUser(@Param("mail")String mail,@Param("pwd")String pwd);
+	User validateUser(@Param("mail")String mail,@Param("pwd")String pwd);
 	
 	List<User> findByType(Role type);
+	
+	Optional<User> findByEmail(String emailId);
 }
