@@ -14,7 +14,7 @@ import lombok.ToString;
 public class PaymentDTO {
 	private int oid;
 	private String accName;
-	private int cartNumber;
+	private int cardNumber;
 	private int uid;
 	private int totalAmount;
 }

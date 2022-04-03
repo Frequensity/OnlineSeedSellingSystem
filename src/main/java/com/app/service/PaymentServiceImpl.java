@@ -33,7 +33,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		
 		Payment payment = new Payment();
 		payment.setAccountHolderName(p.getAccName());
-		payment.setCardNumber(p.getCartNumber());
+		payment.setCardNumber(p.getCardNumber());
 		payment.setOrder(order);
 		payment.setUserId(user);
 		payment.setTotalAmount(p.getTotalAmount());

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.app.dto.ResponseDTO;
 import com.app.pojos.Catagory;
 import com.app.pojos.Product;
 import com.app.service.CatagoryServiceImpl;
@@ -35,7 +36,7 @@ public class ProductController {
 	private CatagoryServiceImpl catagoryService;
 	
 	@PostMapping("/upload")
-	public ResponseEntity<?> addProduct(@RequestParam MultipartFile file,
+	public ResponseDTO<?> addProduct(@RequestParam MultipartFile file,
 			@RequestParam String prodName,
 			@RequestParam String descp,
 			@RequestParam double price,
@@ -54,12 +55,12 @@ public class ProductController {
 			
 			Product newProduct = new Product(file.getOriginalFilename(), prodName, descp, price, qty);
 			newProduct.setCatagoryId(catagoryExist);
-			productService.addproduct(newProduct);
+			String addproduct = productService.addproduct(newProduct);
 			
-			return new ResponseEntity<>(HttpStatus.OK);
+			return new ResponseDTO<>(HttpStatus.OK,"product added successfully",addproduct);
 			
 		}else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseDTO<>(HttpStatus.NOT_FOUND,"not added","null");
 		}
 		
 
