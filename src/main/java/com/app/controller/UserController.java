@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.dto.CartDTO;
+import com.app.dto.ForgotPasswordDTO;
 import com.app.dto.LoginRequest;
 import com.app.dto.OrderDTO;
 import com.app.dto.PaymentDTO;
@@ -183,6 +184,16 @@ public class UserController {
 			return new ResponseDTO<>(HttpStatus.OK, "payment done successfully", savePayment);
 		}else {
 			return new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR, "payment was unsuccessfully", null);
+		}
+	}
+	
+	@GetMapping("/forgot/{email}")
+	public ResponseDTO<?> getPasswordByEmail(@PathVariable String email){
+		String password = userService.getPassword(email);
+		if(password != null) {
+			return new ResponseDTO<>(HttpStatus.OK, "User Exist", password);
+		}else {
+			return new ResponseDTO<>(HttpStatus.OK, "User doesn't Exist", null);
 		}
 	}
 

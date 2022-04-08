@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.dao.AddressRepository;
 import com.app.dao.UserRepository;
 import com.app.dto.DTOEntityConverter;
+import com.app.dto.ForgotPasswordDTO;
 import com.app.dto.LoginRequest;
 import com.app.dto.UserDTO;
 import com.app.pojos.Address;
@@ -73,6 +74,12 @@ public class UserServiceImpl implements IUserService {
 	public String deleteUser(int id) {
 		userRepository.deleteById(id);
 		return "User deleted successfully";
+	}
+
+	@Override
+	public String getPassword(String email) {
+		
+		return userRepository.getPasswordByEmailId(email);
 	}
 
 	
