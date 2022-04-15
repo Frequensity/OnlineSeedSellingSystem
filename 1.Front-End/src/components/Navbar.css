@@ -7,6 +7,7 @@
 body {
     background-color: #6cbe91;
     background-image: radial-gradient(circle, #fcfcfc, #f6f6f7, #f0f1f1, #eaebec, #e4e6e6);
+    
 }
 
 .name {
@@ -47,13 +48,14 @@ body {
 }
 
 .btn {
-    height: 35px;
-    width: 170px;
+    padding: .4em 2.4em;
     border: none;
-    border-radius: 20px;
-    background-color: #365672;
-    font-size: 14px;
-    font-weight: 500
+    border-radius: 5px;
+    background-color: #20ad5b;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+
 }
 
 .text {

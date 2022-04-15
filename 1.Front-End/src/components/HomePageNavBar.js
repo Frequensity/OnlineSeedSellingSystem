@@ -29,8 +29,8 @@ const HomePageNavBar = () => {
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 &emsp;&emsp;&emsp;&emsp;
-                <h5>Welcome,</h5>
-                <h5>{isSignin.user.firstName}</h5>&emsp; 
+                <h5>Welcome {isSignin.user.firstName || 'User'}</h5>
+                &emsp; 
                 {isSignin.status !== true ? (<Link to="/signin" ><a className="btn btn-success">Login</a></Link>):(<a className="btn btn-success" href="/" >Logout</a>)}
                 {/* <Link to="/signin" >
                        <a className="btn btn-success">Login</a>
