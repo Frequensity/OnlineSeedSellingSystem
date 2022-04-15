@@ -24,6 +24,7 @@ import ItemsRemoved from './components/ItemsRemoved';
 import OrderDetails from './components/OrderDetails';
 import Payment from './components/Payment';
 import ConfirmOrder from './components/ConfirmOrder';
+import NotFound from './components/Utils/NotFound';
 
 function App() {
 
@@ -55,10 +56,10 @@ function App() {
           <Route path="/payment" component={Payment} />
           <Route path="/orderConfirm" component={ConfirmOrder} />
           <Route path="/forgotPassword" component={GetPassword} />
+          <Route component={NotFound} />
         </Switch>
-        </div>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <Footer/>
+        </div>
       </Router> 
       
     </div>

@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const Box = styled.div`
 padding: 60px 30px;
 background-image: radial-gradient(circle, #fcfcfc, #f6f6f7, #f0f1f1, #eaebec, #e4e6e6);
-bottom: 0;
 width: 100%;
-
 
 @media (max-width: 1000px) {
 	padding: 70px 30px;
